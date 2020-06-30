@@ -45,7 +45,7 @@ const authConfig = {
    * The number of files to display per page. [Recommended value is between 100 and 1000].
    * If this value is greater than 1000, it causes an error when requesting the drive API.
    * If this value is too small, it causes the incremental loading to fail.
-   * Another effect of this value is that if the number of files in the directory is greater than this value (i.e., if multiple pages need to be displayed), the first page's results will be cached.
+   * Another effect of this value is that if the number of files in the directory is greater than this value (i.e., if multiple pages need to be displayed), the results will be cached.
    */
   "files_list_page_size": 500,
   /**
