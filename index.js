@@ -16,7 +16,7 @@ const authConfig = {
    * [protect_file_link]: whether Basic Auth is used to protect file links or not, the default value (if not set) is false, i.e. no file link is protected (convenient for direct download/external playback, etc.)
    * Basic Auth can be set separately for each disk. Also applies to all folders/subfolders under them
    * Note: By default, file links are not protected, which is convenient for direct download/external playback;
-   *       If you want to protect the file link, you need to set protect_file_link to true. In this case, if you want to do external playback, you need to replace host with user:pass@host.
+   *       If you want to protect file links, you need to set protect_file_link to true. In this case, if you want to do external playback, you need to replace host with user:pass@host.
    * If you don't want Basic Auth, just keep both user and pass empty. It's also okay to just not set them.
    * Note: The search function is not supported on disks with IDs set to subfolder IDs (this does not affect other disks).
    */
