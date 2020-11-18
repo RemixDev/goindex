@@ -81,7 +81,7 @@ function title(path) {
   // $('title').html(document.siteName + ' - ' + path);
   var model = window.MODEL;
   if (model.is_search_page)
-    $('title').text(`${document.siteName} - ${drive_name} - 搜索 ${model.q} 的结果`);
+    $('title').text(`${document.siteName} - ${drive_name} - Search results for ${model.q}`);
   else
     $('title').text(`${document.siteName} - ${drive_name} - ${path}`);
 }
