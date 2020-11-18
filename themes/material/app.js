@@ -83,7 +83,7 @@ function title(path) {
   if (model.is_search_page)
     $('title').html(`${document.siteName} - ${drive_name} - 搜索 ${model.q} 的结果`);
   else
-    $('title').html(`${document.siteName} - ${drive_name} - ${path}`);
+    $('title').html(`${document.siteName} - ${drive_name} - ${path.val()}`);
 }
 
 // 渲染导航栏
