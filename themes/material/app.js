@@ -91,36 +91,29 @@ function nav(path) {
   var model = window.MODEL;
   var html = "";
   var cur = window.current_drive_order || 0;
-  html += `<a href="/${cur}:/" class="mdui-typo-headline folder">${document.siteName}</a>`;
   var names = window.drive_names;
-  /*html += `<button class="mdui-btn mdui-btn-raised" mdui-menu="{target: '#drive-names'}"><i class="mdui-icon mdui-icon-left material-icons">share</i> ${names[cur]}</button>`;
-  html += `<ul class="mdui-menu" id="drive-names" style="transform-origin: 0px 0px; position: fixed;">`;
-  names.forEach((name, idx) => {
-      html += `<li class="mdui-menu-item ${(idx === cur) ? 'mdui-list-item-active' : ''} "><a href="/${idx}:/" class="mdui-ripple">${name}</a></li>`;
-  });
-  html += `</ul>`;*/
-
-  // 修改为 select
-  html += `<select class="mdui-select" onchange="window.location.href=this.value" mdui-select style="overflow:visible;padding-left:8px;padding-right:8px">`;
-  names.forEach((name, idx) => {
-    html += `<option value="/${idx}:/"  ${idx === cur ? 'selected="selected"' : ''} >${name}</option>`;
-  });
-  html += `</select>`;
-
+  var rootPath = ""
+  if (names.length > 1){
+    html += `<select class="mdui-select" onchange="window.location.href=this.value" mdui-select style="overflow:visible;">`;
+    names.forEach((name, idx) => {
+      html += `<option value="/${idx}:/" ${idx === cur ? 'selected="selected"' : ""}>${name}</option>`;
+    });
+    html += `</select>`;
+    rootPath = `/${cur}:`
+  }
+  html += `<a href="${rootPath}/" class="mdui-typo-headline folder">${document.siteName}</a>`;
   if (!model.is_search_page) {
-    var arr = path.trim('/').split('/');
-    var p = '/';
-    if (arr.length > 1) {
-      arr.shift();
-      for (i in arr) {
-        var n = arr[i];
-        n = decodeURI(n);
-        p += n + '/';
-        if (n == '') {
-          break;
-        }
-        html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="/${cur}:${p}">${n}</a>`;
+    var arr = path.trim("/").split("/");
+    var p = "/";
+    if (rootPath != "" && arr.length > 1) arr.shift();
+    for (i in arr) {
+      var n = arr[i];
+      n = decodeURI(n);
+      p += n + "/";
+      if (n == "") {
+        break;
       }
+      html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="${rootPath}${p}">${n}</a>`;
     }
   }
   var search_text = model.is_search_page ? (model.q || '') : '';
